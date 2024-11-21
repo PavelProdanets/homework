@@ -38,12 +38,10 @@ class WikiUrl(Url):
         super().__init__("https", "wikipedia.org", path, query, fragment)
 
 url = Url("https", "example.com", "/path", "query=param", "fragment")
-# print(url)  # Output: https://example.com/path?query=param#fragment
+print(url)  # Output: https://example.com/path?query=param#fragment
 
-# https_url = HttpsUrl("example.com", "/path", "query=param", "fragment")
-# print(https_url)  # Output: https://example.com/path?query=param#fragment
+https_url = HttpsUrl("example.com", "/path", "query=param", "fragment")
+print(https_url)  # Output: https://example.com/path?query=param#fragment
 
-# google_url = GoogleUrl("/search", "q=python", "fragment")
-# print(google_url)  # Output: https://google.com/search?q=python#fragment
-
-print(url.str())
+google_url = GoogleUrl("/search", "q=python", "fragment")
+print(google_url)  # Output: https://google.com/search?q=python#fragment
