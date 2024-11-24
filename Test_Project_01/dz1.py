@@ -66,10 +66,10 @@ class UrlCreator:
 url = UrlCreator('http', 'google.com').search(q='test')._create()
 print(url)
 
-# url_creator = UrlCreator(scheme='https', authority='docs.python.org')
-# python_url = url_creator('api', 'v1', 'list')._create()
-# print(python_url)
+url_creator = UrlCreator(scheme='https', authority='docs.python.org')
+python_url = url_creator('api', 'v1', 'list')._create()
+print(python_url)
 
-# url_creator = UrlCreator(scheme='https', authority='docs.python.org')
-# python_url = url_creator('3').search(q='getattr', check_keywords='yes')._create()
-# print(python_url)
+url_creator = UrlCreator(scheme='https', authority='docs.python.org')
+python_url = url_creator('3').search(q='getattr', check_keywords='yes')._create()
+print(python_url)
