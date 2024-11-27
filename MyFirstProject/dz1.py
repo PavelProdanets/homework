@@ -8,7 +8,7 @@ class Url:
 
     def __eq__(self, other):
         if isinstance(other, str):
-            return str(self) == other
+            return str(self) == str(other)
         return NotImplemented
 
     def __str__(self):
@@ -21,26 +21,21 @@ class Url:
             url += f"#{self.fragment}"
         return url
 
-
 class HttpsUrl(Url):
     def __init__(self, authority, path='', query='', fragment=''):
         super().__init__('https', authority, path, query, fragment)
-
 
 class HttpUrl(Url):
     def __init__(self, authority, path='', query='', fragment=''):
         super().__init__('http', authority, path, query, fragment)
 
-
 class GoogleUrl(Url):
     def __init__(self, path='', query='', fragment=''):
         super().__init__('https', 'google.com', path, query, fragment)
 
-
 class WikiUrl(Url):
     def __init__(self, path='', query='', fragment=''):
         super().__init__('https', 'wikipedia.org', path, query, fragment)
-
 
 class UrlCreator:
     def __init__(self, scheme, authority):
@@ -55,14 +50,15 @@ class UrlCreator:
         return Url(self.scheme, self.authority, path, query)
 
     def __getattr__(self, name):
-        self.path_parts.append(name)
+        new_instance = UrlCreator(self.scheme, self.authority)
+        new_instance.path_parts = self.path_parts.append(name)
+        new_instance.query_params = self.query_params
         return self
 
     def __call__(self, *args, **kwargs):
         self.path_parts.extend(args)
         self.query_params.update(kwargs)
         return self
-
 
 creator = UrlCreator('http', 'google.com')
 url = creator.search(q='test')._create()
