@@ -1,7 +1,7 @@
 import subprocess
 
 # Copy the file dz1.py to the file dz1_run.py
-subprocess.run(['cp', 'dz1.py', 'dz1_run.py'])
+subprocess.run(['cp', '/mnt/c/MyProjects/MyFirstProject/DZ1/dz1.py', '/mnt/c/MyProjects/MyFirstProject/DZ2/dz1_run.py'])
 
 # Append bash shebang to the beginning of dz1_run.py
 with open('dz1_run.py', 'r+', newline='') as file:
